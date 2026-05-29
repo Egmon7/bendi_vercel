@@ -33,7 +33,6 @@
   --bc-header-bg: rgba(255, 255, 255, 0.9);
   --bc-hover: #fafafa;
   --bc-input-bg: #ffffff;
-  --bc-grid-line: rgba(0, 0, 0, 0.04);
 }
 
 html.dark {
@@ -50,18 +49,10 @@ html.dark {
   --bc-header-bg: rgba(12, 11, 24, 0.92);
   --bc-hover: rgba(255, 255, 255, 0.05);
   --bc-input-bg: #1a1830;
-  --bc-grid-line: rgba(255, 255, 255, 0.04);
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-.bg-grid {
-  background-image:
-    linear-gradient(to right, var(--bc-grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--bc-grid-line) 1px, transparent 1px);
-  background-size: 48px 48px;
 }
 
 .search-field::after {

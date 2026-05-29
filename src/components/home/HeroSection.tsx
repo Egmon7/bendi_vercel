@@ -22,15 +22,10 @@ export function HeroSection() {
   return (
     <section
       id="accueil"
-      className="relative overflow-hidden px-4 pb-16 pt-20 text-center sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pt-28"
+      className="px-4 pb-16 pt-20 text-center sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pt-28"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid">
-        <div className="absolute -left-20 top-1/4 h-[420px] w-[420px] rounded-full bg-teal-200/40 blur-[100px] dark:bg-teal-500/10" />
-        <div className="absolute -right-20 top-1/3 h-[380px] w-[380px] rounded-full bg-violet-200/40 blur-[100px] dark:bg-violet-500/10" />
-      </div>
-
-      <div className="relative mx-auto max-w-3xl">
-        <div className="mx-auto inline-flex max-w-full items-center gap-2 rounded-full border border-bc-border bg-bc-surface/80 px-3 py-1 text-[11px] text-bc-text-secondary backdrop-blur-sm sm:text-[12px]">
+      <div className="mx-auto max-w-3xl">
+        <div className="mx-auto inline-flex max-w-full items-center gap-2 rounded-full border border-bc-border bg-bc-surface px-3 py-1 text-[11px] text-bc-text-secondary sm:text-[12px]">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
           <span className="truncate sm:whitespace-normal">
             Réservation bus en RDC — agences vérifiées
@@ -48,7 +43,7 @@ export function HeroSection() {
 
         <form
           onSubmit={handleSubmit}
-          className="mx-auto mt-6 w-full max-w-2xl rounded-xl border border-bc-border bg-bc-surface p-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] sm:mt-8 sm:p-4 lg:mt-10 lg:rounded-full lg:p-1.5"
+          className="mx-auto mt-6 w-full max-w-2xl rounded-xl border border-bc-border bg-bc-surface p-3 sm:mt-8 sm:p-4 lg:mt-10 lg:rounded-full lg:p-1.5"
         >
           <div className="grid grid-cols-2 gap-2 lg:flex lg:items-center lg:gap-0">
             <div className="search-field relative col-span-1 lg:flex-1 lg:border-r lg:border-bc-border-subtle lg:px-3">
@@ -154,7 +149,7 @@ export function HeroSection() {
           {CITIES.map((city) => (
             <span
               key={city.value}
-              className="rounded-full border border-bc-border bg-bc-surface/60 px-2.5 py-1 text-[11px] font-medium text-bc-text-secondary backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-[12px]"
+              className="rounded-full border border-bc-border bg-bc-surface px-2.5 py-1 text-[11px] font-medium text-bc-text-secondary sm:px-3 sm:py-1.5 sm:text-[12px]"
             >
               {city.label}
             </span>
