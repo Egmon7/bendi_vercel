@@ -22,10 +22,15 @@ export function HeroSection() {
   return (
     <section
       id="accueil"
-      className="px-4 pb-16 pt-20 text-center sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pt-28"
+      className="relative overflow-hidden px-4 pb-16 pt-20 text-center sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pt-28"
     >
-      <div className="mx-auto max-w-3xl">
-        <div className="mx-auto inline-flex max-w-full items-center gap-2 rounded-full border border-bc-border bg-bc-surface px-3 py-1 text-[11px] text-bc-text-secondary sm:text-[12px]">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid">
+        <div className="absolute -left-20 top-1/4 h-[420px] w-[420px] rounded-full bg-teal-200/40 blur-[100px] dark:bg-teal-500/10" />
+        <div className="absolute -right-20 top-1/3 h-[380px] w-[380px] rounded-full bg-violet-200/40 blur-[100px] dark:bg-violet-500/10" />
+      </div>
+
+      <div className="relative mx-auto max-w-3xl">
+        <div className="mx-auto inline-flex max-w-full items-center gap-2 rounded-full border border-bc-border bg-bc-surface/80 px-3 py-1 text-[11px] text-bc-text-secondary backdrop-blur-sm sm:text-[12px]">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
           <span className="truncate sm:whitespace-normal">
             Réservation bus en RDC — agences vérifiées
@@ -43,90 +48,85 @@ export function HeroSection() {
 
         <form
           onSubmit={handleSubmit}
-          className="mx-auto mt-6 w-full max-w-2xl rounded-xl border border-bc-border bg-bc-surface p-3 sm:mt-8 sm:p-4 lg:mt-10 lg:rounded-full lg:p-1.5"
+          className="mx-auto mt-6 w-full max-w-2xl overflow-hidden rounded-xl border border-bc-border bg-bc-surface p-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] sm:mt-8 lg:mt-10 lg:rounded-full lg:p-1.5"
         >
-          <div className="grid grid-cols-2 gap-2 lg:flex lg:items-center lg:gap-0">
-            <div className="search-field relative col-span-1 lg:flex-1 lg:border-r lg:border-bc-border-subtle lg:px-3">
-              <label
-                htmlFor="depart"
-                className="mb-0.5 block text-[10px] font-medium text-bc-text-muted sm:text-[11px] lg:sr-only"
-              >
-                Départ
-              </label>
-              <select
-                id="depart"
-                name="depart"
-                value={depart}
-                onChange={(e) => setDepart(e.target.value)}
-                className="field-select w-full cursor-pointer appearance-none rounded-lg border border-bc-border-subtle bg-bc-surface-muted py-2 pl-2 pr-7 text-xs font-medium text-bc-text outline-none sm:text-sm lg:border-0 lg:bg-transparent lg:py-2.5 lg:pl-0"
-              >
-                {CITIES.map((city) => (
-                  <option key={city.value} value={city.value}>
-                    {city.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-0">
+            <div className="flex divide-x divide-bc-border-subtle lg:contents">
+              <div className="search-field relative min-w-0 flex-1 px-1.5 py-1 sm:px-2 lg:flex-1 lg:border-r lg:border-bc-border-subtle lg:px-3 lg:py-0">
+                <label htmlFor="depart" className="sr-only">
+                  Départ
+                </label>
+                <select
+                  id="depart"
+                  name="depart"
+                  value={depart}
+                  onChange={(e) => setDepart(e.target.value)}
+                  className="field-select w-full min-w-0 cursor-pointer appearance-none border-0 bg-transparent py-0 pl-0 pr-5 text-[11px] font-medium text-bc-text outline-none sm:pr-6 sm:text-sm lg:py-2.5 lg:pr-7"
+                >
+                  {CITIES.map((city) => (
+                    <option key={city.value} value={city.value}>
+                      {city.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div className="search-field relative col-span-1 lg:flex-1 lg:border-r lg:border-bc-border-subtle lg:px-3">
-              <label
-                htmlFor="destination"
-                className="mb-0.5 block text-[10px] font-medium text-bc-text-muted sm:text-[11px] lg:sr-only"
-              >
-                Destination
-              </label>
-              <select
-                id="destination"
-                name="destination"
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
-                className="field-select w-full cursor-pointer appearance-none rounded-lg border border-bc-border-subtle bg-bc-surface-muted py-2 pl-2 pr-7 text-xs font-medium text-bc-text outline-none sm:text-sm lg:border-0 lg:bg-transparent lg:py-2.5 lg:pl-0"
-              >
-                {CITIES.map((city) => (
-                  <option key={city.value} value={city.value}>
-                    {city.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+              <div className="search-field relative min-w-0 flex-1 px-1.5 py-1 sm:px-2 lg:flex-1 lg:border-r lg:border-bc-border-subtle lg:px-3 lg:py-0">
+                <label htmlFor="destination" className="sr-only">
+                  Destination
+                </label>
+                <select
+                  id="destination"
+                  name="destination"
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
+                  className="field-select w-full min-w-0 cursor-pointer appearance-none border-0 bg-transparent py-0 pl-0 pr-5 text-[11px] font-medium text-bc-text outline-none sm:pr-6 sm:text-sm lg:py-2.5 lg:pr-7"
+                >
+                  {CITIES.map((city) => (
+                    <option key={city.value} value={city.value}>
+                      {city.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div className="search-field relative col-span-2 lg:col-span-1 lg:flex-1 lg:border-r lg:border-bc-border-subtle lg:px-3">
-              <label
-                htmlFor="date-voyage"
-                className="mb-0.5 block text-[10px] font-medium text-bc-text-muted sm:text-[11px] lg:sr-only"
-              >
-                Date
-              </label>
-              <input
-                type="date"
-                id="date-voyage"
-                name="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="w-full cursor-pointer rounded-lg border border-bc-border-subtle bg-bc-surface-muted py-2 pl-2 text-xs font-medium text-bc-text outline-none sm:text-sm lg:border-0 lg:bg-transparent lg:py-2.5 lg:pl-0"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="col-span-2 inline-flex items-center justify-center gap-1.5 rounded-lg bg-neutral-950 py-2 text-xs font-semibold text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 sm:text-sm lg:col-span-1 lg:mx-1 lg:rounded-full lg:px-5 lg:py-2.5"
-            >
-              <svg
-                className="h-3.5 w-3.5 sm:h-4 sm:w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              <div className="search-field relative min-w-0 flex-1 px-1.5 py-1 sm:px-2 lg:flex-1 lg:border-r lg:border-bc-border-subtle lg:px-3 lg:py-0">
+                <label htmlFor="date-voyage" className="sr-only">
+                  Date
+                </label>
+                <input
+                  type="date"
+                  id="date-voyage"
+                  name="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="w-full min-w-0 cursor-pointer border-0 bg-transparent py-0 pl-0 text-[11px] font-medium text-bc-text outline-none sm:text-sm lg:py-2.5"
                 />
-              </svg>
-              Rechercher
-            </button>
+              </div>
+            </div>
+
+            <div className="flex justify-center lg:contents">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-neutral-950 px-4 py-2 text-xs font-bold text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 sm:px-6 sm:py-2.5 sm:text-sm sm:font-semibold lg:mx-1 lg:py-2.5"
+              >
+                <svg
+                  className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+                Rechercher
+              </button>
+            </div>
           </div>
         </form>
 
@@ -149,7 +149,7 @@ export function HeroSection() {
           {CITIES.map((city) => (
             <span
               key={city.value}
-              className="rounded-full border border-bc-border bg-bc-surface px-2.5 py-1 text-[11px] font-medium text-bc-text-secondary sm:px-3 sm:py-1.5 sm:text-[12px]"
+              className="rounded-full border border-bc-border bg-bc-surface/60 px-2.5 py-1 text-[11px] font-medium text-bc-text-secondary backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-[12px]"
             >
               {city.label}
             </span>
